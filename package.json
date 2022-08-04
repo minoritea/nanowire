@@ -2,17 +2,14 @@
   "name": "nanowire",
   "version": "0.0.1",
   "description": "",
-  "main": "dst/index.js",
-  "module": "dst/index.mjs",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "build": "npm run build:esm | npm run build:iife",
-    "build:iife": "esbuild --bundle --format=iife src/*.ts --outfile=dst/index.js --global-name=nanowire --banner:js=\"/*\n  Nanowire $(npm pkg get version)\n  Copyrigh (c) 2022 Minori Tokuda\n*/\"",
-    "build:esm": "esbuild --bundle --format=esm src/*.ts --outfile=dst/index.mjs --banner:js=\"/*\n  Nanowire $(npm pkg get version)\n  Copyrigh (c) 2022 Minori Tokuda\n*/\""
+    "build": "tsc"
   },
   "author": "Minori Tokuda",
   "license": "MIT",
   "devDependencies": {
-    "esbuild": "^0.14.53",
     "typescript": "^4.7.4"
   }
 }
