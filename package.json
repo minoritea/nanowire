@@ -3,7 +3,12 @@
   "version": "0.0.1",
   "author": "Minori Tokuda",
   "license": "MIT",
-  "description": "a minimal DOM renderer inspired by Hotwire's Turbo-Frames",
+  "description": "a minimal DOM patcher for HTML-over-the-wire",
+  "keywords": [
+    "html over the wire",
+    "morphdom",
+    "front-end"
+  ],
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
