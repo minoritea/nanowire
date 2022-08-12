@@ -3,13 +3,27 @@
   "version": "0.0.1",
   "description": "",
   "main": "dist/index.js",
+  "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc"
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
+    "format": "prettier -w src",
+    "build": "yarn build:type-definitions && yarn build:cjs && yarn build:mjs",
+    "build:type-definitions": "tsc --declaration --emitDeclarationOnly",
+    "build:mjs": "esbuild --bundle --target=es2021 --platform=browser --format=esm --sourcemap --minify --banner:js=\"$(cat BANNER)\" --outfile=dist/index.mjs src/index.ts",
+    "build:cjs": "esbuild --bundle --target=es2021 --platform=browser --format=cjs --sourcemap --minify --banner:js=\"$(cat BANNER)\" --outfile=dist/index.js src/index.ts"
   },
   "author": "Minori Tokuda",
   "license": "MIT",
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.33.0",
+    "@typescript-eslint/parser": "^5.33.0",
+    "esbuild": "^0.15.1",
+    "eslint": "^8.21.0",
+    "prettier": "^2.7.1",
     "typescript": "^4.7.4"
+  },
+  "dependencies": {
   }
 }
