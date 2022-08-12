@@ -1,9 +1,11 @@
+import morphdom from "morphdom";
+
 interface Root {
   querySelectorAll: typeof document.querySelectorAll;
 }
 
-export const apply = async (text: string, root: Root) => {
-  const frames = root.querySelectorAll("nanowire-frame");
+export const apply = async (root: Root, text: string) => {
+  const frames = root.querySelectorAll("nw-frame");
   const frameMap = new Map<string, Element>();
   frames.forEach((el) => {
     if (el.id !== "") {
@@ -18,11 +20,11 @@ export const apply = async (text: string, root: Root) => {
   const parser = new DOMParser();
   const newFrames = parser
     .parseFromString(text, "text/html")
-    .querySelectorAll("nanowire-frame:not(nanowire-frame nanowire-frame)");
+    .querySelectorAll("nw-frame:not(nw-frame nw-frame)");
   newFrames.forEach((el) => {
     const dest = frameMap.get(el.id);
     if (dest != null) {
-      dest.replaceWith(el);
+      morphdom(dest, el);
     }
   });
 };
