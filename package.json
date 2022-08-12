@@ -1,6 +1,6 @@
 {
   "name": "nanowire",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Minori Tokuda",
   "license": "MIT",
   "description": "a minimal DOM patcher for HTML-over-the-wire",
