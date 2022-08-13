@@ -1,5 +1,5 @@
 # Nanowire
-Nanowire is a minimal a minimal DOM patcher for HTML-over-the-wire.
+Nanowire is a minimal DOM patcher for HTML-over-the-wire.
 
 # How to use
 1. Enclose the element to be updated in a `<nw-frame>` tag with a unique ID.
