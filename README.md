@@ -33,6 +33,15 @@ You can apply server-side rendered HTML as updates.
 fetch('your API').then(res => res.text()).then(text => apply(document, text));
 ```
 
+The `nanowire/client` module provides short hands for fetch and apply.
+```html
+<script src="/nanowire/client.js"></script>
+
+<button onClick="nanowire.get('your API')">GET</button>
+
+<button onClick="nanowire.post('your API', JSON.stringify(['request body']))">POST</button>
+```
+
 # Example
 
 See the example.
