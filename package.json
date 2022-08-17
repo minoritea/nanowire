@@ -26,7 +26,8 @@
   },
   "types": "./dist/index.d.ts",
   "scripts": {
-    "prepublishOnly": "yarn run lint && yarn run format && yarn run build",
+    "prepublishOnly": "yarn clean && yarn run lint && yarn run format && yarn run build",
+    "clean": "if [ -e dist ];then rm -r dist;fi",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
     "format": "prettier -w src",
