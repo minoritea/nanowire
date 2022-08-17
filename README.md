@@ -35,7 +35,7 @@ fetch('your API').then(res => res.text()).then(text => apply(document, text));
 
 The `nanowire/client` module provides short hands for fetch and apply.
 ```html
-<script src="/nanowire/client.js"></script>
+<script src="https://unpkg.com/nanowire/dist/client.js"></script>
 
 <button onClick="nanowire.get('your API')">GET</button>
 
