@@ -4,8 +4,8 @@ Nanowire is a minimal DOM patcher for HTML-over-the-wire.
 # How to use
 1. Enclose the element to be updated in a `<nw-frame>` tag with a unique ID.
 2. Give the following arguments to the `apply` function,
-    1. The DOM node or document that is the ancestor of the "nw-frame" to be updated,
-    2. Text containing "nw-frame" tags surrounding the updated content.
+    1. The DOM node or document that is the ancestor of the "nw-frame" tags to be updated,
+    2. Text containing "nw-frame" tags surrounding updates.
 
 The following HTML is displayed first,
 ```html
@@ -46,7 +46,7 @@ The `nanowire/client` module provides short hands for fetch and apply.
 
 See the example.
 ```shell
-# in this repository.
+# clone this repository and move inside.
 $ cd example
 $ yarn serve
 ```
