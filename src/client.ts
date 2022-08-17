@@ -1,44 +1,33 @@
 import { apply } from "./";
 
+type FetchInput = Parameters<typeof fetch>[0];
+const fetchAndApply = async (
+  input: FetchInput,
+  method: "GET" | "POST" | "PUT" | "DELETE",
+  body?: BodyInit | null,
+  init?: RequestInit | null
+) => {
+  init = { ...init, method };
+  if (body != null) {
+    init.body = body;
+  }
+  const res = await fetch(input, init);
+  return apply(document, await res.text());
+};
+
 export const client = {
-  async get(url: Request | URL | string, init?: RequestInit) {
-    init = { ...init, method: "GET" };
-    const res = await fetch(url, init);
-    return apply(document, await res.text());
+  async get(input: FetchInput, init?: RequestInit) {
+    return fetchAndApply(input, "GET", null, init);
   },
-
-  async post(
-    url: Request | URL | string,
-    body?: BodyInit | null,
-    init?: RequestInit
-  ) {
-    init = { ...init, method: "POST" };
-    if (body != null) {
-      init.body = body;
-    }
-    const res = await fetch(url, init);
-    return apply(document, await res.text());
+  async post(input: FetchInput, body?: BodyInit | null, init?: RequestInit) {
+    return fetchAndApply(input, "POST", body, init);
   },
-
-  async put(
-    url: Request | URL | string,
-    body?: BodyInit | null,
-    init?: RequestInit
-  ) {
-    init = { ...init, method: "PUT" };
-    if (body != null) {
-      init.body = body;
-    }
-    const res = await fetch(url, init);
-    return apply(document, await res.text());
+  async put(input: FetchInput, body?: BodyInit | null, init?: RequestInit) {
+    return fetchAndApply(input, "PUT", body, init);
   },
-
-  async delete(url: Request | URL | string, init?: RequestInit) {
-    init = { ...init, method: "DELETE" };
-    const res = await fetch(url, init);
-    return apply(document, await res.text());
+  async delete(input: FetchInput, init?: RequestInit) {
+    return fetchAndApply(input, "DELETE", null, init);
   },
-
   apply,
 };
 
