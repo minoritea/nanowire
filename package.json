@@ -37,7 +37,7 @@
     "build:type-definitions": "tsc --declaration --emitDeclarationOnly",
     "build:index:esm": "yarn _build --format=esm --outfile=dist/index.mjs src/index.ts",
     "build:client:esm": "yarn _build --format=esm --outfile=dist/client.mjs src/client.ts",
-    "build:client:iife": "yarn _build --bundle --format=iife --global-name=nanowire --footer:js='nanowire = nanowire.default' --outfile=dist/client.js src/client.ts",
+    "build:client:iife": "yarn _build --bundle --format=iife --global-name=nanowire --footer:js='nanowire=nanowire.default;' --outfile=dist/client.js src/client.ts",
     "test": "yarn jest"
   },
   "devDependencies": {
