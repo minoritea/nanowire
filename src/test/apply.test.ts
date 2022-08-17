@@ -1,4 +1,4 @@
-import {apply} from "../";
+import { apply } from "../";
 
 test('"apply" should modify a frame', () => {
   document.body.innerHTML = `
@@ -6,13 +6,16 @@ test('"apply" should modify a frame', () => {
       <div class="name">Alice</div>
     </nw-frame>
   `;
-  apply(document, `
+  apply(
+    document,
+    `
     <nw-frame id="frame-1">
       <div class="name">Bob</div>
     </nw-frame>
-  `);
-  expect(document.querySelector("div.name")?.textContent).toBe("Bob")
-})
+  `
+  );
+  expect(document.querySelector("div.name")?.textContent).toBe("Bob");
+});
 
 test('"apply" should modify multiple frames', () => {
   document.body.innerHTML = `
@@ -25,7 +28,9 @@ test('"apply" should modify multiple frames', () => {
       </nw-frame>
     </ol>
   `;
-  apply(document, `
+  apply(
+    document,
+    `
     <ol>
       <nw-frame id="frame-1">
         <li>Bob</li>
@@ -34,9 +39,12 @@ test('"apply" should modify multiple frames', () => {
         <li>Alice</li>
       </nw-frame>
     </ol>
-  `);
-  expect(Array.from(document.querySelectorAll("li")).map(el => el.textContent)).toStrictEqual(["Bob", "Alice"])
-})
+  `
+  );
+  expect(
+    Array.from(document.querySelectorAll("li")).map((el) => el.textContent)
+  ).toStrictEqual(["Bob", "Alice"]);
+});
 
 test('"apply" should NOT update frames without ID', () => {
   document.body.innerHTML = `
@@ -44,13 +52,16 @@ test('"apply" should NOT update frames without ID', () => {
       <div class="name">Alice</div>
     </nw-frame>
   `;
-  apply(document, `
+  apply(
+    document,
+    `
     <nw-frame id="frame-1">
       <div class="name">Bob</div>
     </nw-frame>
-  `);
-  expect(document.querySelector("div.name")?.textContent).toBe("Alice")
-})
+  `
+  );
+  expect(document.querySelector("div.name")?.textContent).toBe("Alice");
+});
 
 test('"apply" should update a frame when the target frame is surrounded by another frame', () => {
   document.body.innerHTML = `
@@ -60,14 +71,17 @@ test('"apply" should update a frame when the target frame is surrounded by anoth
       </nw-frame>
     </nw-frame>
   `;
-  apply(document, `
+  apply(
+    document,
+    `
     <nw-frame id="frame-2">
       <div id="bob">Bob</div>
     </nw-frame>
-  `);
-  expect(document.querySelector("#alice")?.textContent).toBe("Alice")
-  expect(document.querySelector("#bob")?.textContent).toBe("Bob")
-})
+  `
+  );
+  expect(document.querySelector("#alice")?.textContent).toBe("Alice");
+  expect(document.querySelector("#bob")?.textContent).toBe("Bob");
+});
 
 test('"apply" should update only top level frames', () => {
   document.body.innerHTML = `
@@ -82,15 +96,18 @@ test('"apply" should update only top level frames', () => {
       </nw-frame>
     </div>
   `;
-  apply(document, `
+  apply(
+    document,
+    `
     <nw-frame id="frame-1">
       <div id="bob">Bob</div>
       <nw-frame id="frame-3">
         <div id="carol">Carol</div>
       </nw-frame>
     </nw-frame>
-  `);
-  expect(document.querySelector("#alice")).toBeNull()
-  expect(document.querySelector(".outside-frame-1 #carol")).toBeNull()
-  expect(document.querySelector("#carol")?.textContent).toBe("Carol")
-})
+  `
+  );
+  expect(document.querySelector("#alice")).toBeNull();
+  expect(document.querySelector(".outside-frame-1 #carol")).toBeNull();
+  expect(document.querySelector("#carol")?.textContent).toBe("Carol");
+});
