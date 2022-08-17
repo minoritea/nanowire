@@ -8,17 +8,11 @@
     <div>
       <nw-frame id="whoami">
         <div>Hello, who am I?</div>
-        <button onClick= "fetchAndApply(randomNameFile())">
+        <button onClick= "nanowire.get('./alice.html')">
           What's your name?
         </button>
       </nw-frame>
     </div>
-    <script type="module">
-      import { apply } from "/js/nanowire.mjs?v=1";
-      window.fetchAndApply = url =>
-        fetch(url).then(res => res.text()).then(body => apply(document, body));
-      window.randomNameFile = () =>
-        (Math.random() * 2) < 1.0 ? "/alice.html" : "/bob.html";
-    </script>
+    <script src="https://unpkg.com/nanowire/dist/client.js"></script>
   </body>
 </html>

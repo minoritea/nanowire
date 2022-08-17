@@ -1,10 +1,8 @@
 {
   "scripts": {
-    "serve": "serve ./public",
-    "build": "esbuild --bundle --target=es2021 --platform=browser --format=esm --outfile=public/js/nanowire.mjs ../src/index.ts"
+    "serve": "serve ./public"
   },
   "devDependencies": {
-    "esbuild": "^0.15.1",
     "serve": "^14.0.1"
   }
 }
