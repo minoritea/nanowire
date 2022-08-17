@@ -1,6 +1,6 @@
 import morphdom from "morphdom";
 
-interface Root {
+export interface Root {
   querySelectorAll: typeof document.querySelectorAll;
   querySelector: typeof document.querySelector;
 }

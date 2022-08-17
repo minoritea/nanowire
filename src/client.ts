@@ -38,6 +38,8 @@ export const client = {
     const res = await fetch(url, init);
     return apply(document, await res.text());
   },
+
+  apply,
 };
 
 export default client;
