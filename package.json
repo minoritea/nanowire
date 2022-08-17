@@ -26,7 +26,7 @@
   },
   "types": "./dist/index.d.ts",
   "scripts": {
-    "prepublishOnly": "yarn clean && yarn run lint && yarn run format && yarn run build",
+    "prepublishOnly": "yarn clean && yarn run lint && yarn run format && yarn test && yarn run build",
     "clean": "if [ -e dist ];then rm -r dist;fi",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
@@ -37,7 +37,8 @@
     "build:type-definitions": "tsc --declaration --emitDeclarationOnly",
     "build:index:esm": "yarn _build --format=esm --outfile=dist/index.mjs src/index.ts",
     "build:client:esm": "yarn _build --format=esm --outfile=dist/client.mjs src/client.ts",
-    "build:client:iife": "yarn _build --bundle --format=iife --global-name=nanowire --footer:js='nanowire = nanowire.default' --outfile=dist/client.js src/client.ts"
+    "build:client:iife": "yarn _build --bundle --format=iife --global-name=nanowire --footer:js='nanowire = nanowire.default' --outfile=dist/client.js src/client.ts",
+    "test": "yarn jest"
   },
   "devDependencies": {
     "@types/jest": "^28.1.7",
