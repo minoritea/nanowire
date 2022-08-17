@@ -1,6 +1,7 @@
 {
   "name": "nanowire",
   "version": "0.0.2",
+  "type": "module",
   "author": "Minori Tokuda",
   "license": "MIT",
   "description": "a minimal DOM patcher for HTML-over-the-wire",
@@ -9,8 +10,11 @@
     "morphdom",
     "front-end"
   ],
-  "main": "dist/index.mjs",
-  "types": "dist/index.d.ts",
+  "exports": {
+    ".": "./dist/index.mjs",
+    "./client": "./dist/client.mjs"
+  },
+  "types": "./dist/index.d.ts",
   "scripts": {
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
