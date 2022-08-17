@@ -5,6 +5,9 @@
   "author": "Minori Tokuda",
   "license": "MIT",
   "description": "a minimal DOM patcher for HTML-over-the-wire",
+  "files": [
+    "dist"
+  ],
   "keywords": [
     "html over the wire",
     "morphdom",
