@@ -1,5 +1,6 @@
 {
   "include": ["src/**/*.ts"],
+  "exclude": ["src/test/**/*"],
   "compilerOptions": {
     "target": "es2021",
     "lib": ["dom", "es2021"],
